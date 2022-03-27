@@ -1,5 +1,4 @@
-package com.app.ekaly.client;
-
+package com.app.ekaly.model;
 
 import java.time.LocalDate;
 
@@ -70,13 +69,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", dateInscription=" + dateInscription +
-                '}';
+        return "Client{" + "id=" + id + ", name='" + name + '\'' + ", email='" + email + '\'' + ", password='" + password + '\'' + ", dateInscription=" + dateInscription + '}';
     }
 }
 
