@@ -1,27 +1,39 @@
 package com.app.ekaly.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name="client")
 public class Client {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
+
+    @Column(name = "username", length = 255, nullable = false, unique = true)
+    private String username;
+
+    @Column(name = "email", length = 255, nullable = false, unique = true)
     private String email;
+
+    @Column(name = "password", length = 255, nullable = false)
     private String password;
+
     private LocalDate dateInscription;
 
     public Client() {
     }
 
-    public Client(Long id, String name, String email, String password, LocalDate dateInscription) {
+    public Client(Long id, String username, String email, String password, LocalDate dateInscription) {
         this.id = id;
-        this.name = name;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.dateInscription = dateInscription;
     }
 
-    public Client(String name, String email, String password, LocalDate dateInscription) {
-        this.name = name;
+    public Client(String username, String email, String password, LocalDate dateInscription) {
+        this.username = username;
         this.email = email;
         this.password = password;
         this.dateInscription = dateInscription;
@@ -35,12 +47,12 @@ public class Client {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -69,7 +81,13 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" + "id=" + id + ", name='" + name + '\'' + ", email='" + email + '\'' + ", password='" + password + '\'' + ", dateInscription=" + dateInscription + '}';
+        return "Client{" +
+                "id=" + id +
+                ", name='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", dateInscription=" + dateInscription +
+                '}';
     }
 }
 
