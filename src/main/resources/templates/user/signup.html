@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Signup</title>
     <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet">
 </head>
 <body>
@@ -42,13 +42,18 @@
                     <div class="row g-0">
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
-                                <form method="post" action="/auth">
+                                <form method="post" action="/saveUser">
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                        <span class="h1 fw-bold mb-0">Login</span>
+                                        <span class="h1 fw-bold mb-0">Signup</span>
                                     </div>
 
-                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create a new account</h5>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Username</label>
+                                        <input name="username" type="text" placeholder="Your username" class="form-control form-control-lg" />
+                                    </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label">Email address</label>
@@ -63,7 +68,7 @@
                                     <div class="pt-1 mb-4">
                                         <button class="btn btn-dark btn-lg btn-block" name="login" type="submit">Login</button>
                                     </div>
-                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/signup" style="color: #393f81;">Register here</a></p>
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#" style="color: #393f81;">Register here</a></p>
                                 </form>
                             </div>
                         </div>

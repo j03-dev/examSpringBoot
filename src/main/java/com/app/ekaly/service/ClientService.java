@@ -26,6 +26,10 @@ public class ClientService {
        return clientRepository.findById(id).get();
     }
 
+    public Client getClientByEmail(String email){
+        return clientRepository.findByEmail(email);
+    }
+
     public void deleteClient(Long id){
         clientRepository.deleteById(id);
     }

@@ -21,7 +21,7 @@ public class Produit {
     @Column(name = "description", length = 255, nullable = true)
     private String description;
 
-    public Produit() {
+    public Produit(String name, String photo, String description, String prix) {
 
     }
 
@@ -39,7 +39,6 @@ public class Produit {
         this.prix = prix;
         this.description = description;
     }
-
 
     public Long getId() {
         return id;

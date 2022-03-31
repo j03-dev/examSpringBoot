@@ -12,11 +12,11 @@ public class Command {
 
     @ManyToOne
     @JoinColumn(name = "id_client", referencedColumnName = "id")
-    private Client client;
+    private Client id_client;
 
     @ManyToOne
     @JoinColumn(name = "id_produit", referencedColumnName = "id")
-    private Produit produit;
+    private Produit id_produit;
 
     private LocalDate date;
 
@@ -25,15 +25,15 @@ public class Command {
     }
 
     public Command(Client client, Produit produit, LocalDate date) {
-        this.client = client;
-        this.produit = produit;
+        this.id_client = client;
+        this.id_produit = produit;
         this.date = date;
     }
 
     public Command(Long id, Client client, Produit produit, LocalDate date) {
         this.id = id;
-        this.client = client;
-        this.produit = produit;
+        this.id_client = client;
+        this.id_produit = produit;
         this.date = date;
     }
 
@@ -45,20 +45,20 @@ public class Command {
         this.id = id;
     }
 
-    public Client getClient() {
-        return client;
+    public Client getId_client() {
+        return id_client;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setId_client(Client id_client) {
+        this.id_client = id_client;
     }
 
-    public Produit getProduit() {
-        return produit;
+    public Produit getId_produit() {
+        return id_produit;
     }
 
-    public void setProduit(Produit produit) {
-        this.produit = produit;
+    public void setId_produit(Produit id_produit) {
+        this.id_produit = id_produit;
     }
 
     public LocalDate getDate() {
@@ -73,8 +73,8 @@ public class Command {
     public String toString() {
         return "Command{" +
                 "id=" + id +
-                ", client=" + client +
-                ", produit=" + produit +
+                ", client=" + id_client +
+                ", produit=" + id_produit +
                 ", date=" + date +
                 '}';
     }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Upload Produit</title>
     <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet">
 </head>
 <body>
@@ -15,10 +15,10 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Acceuil</a>
+                    <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Login</a>
+                    <a class="nav-link" href="#">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Admin</a>
@@ -42,28 +42,38 @@
                     <div class="row g-0">
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
-                                <form method="post" action="/auth">
+                                <form method="post" action="/admin/saveProduit">
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                        <span class="h1 fw-bold mb-0">Login</span>
+                                        <span class="h1 fw-bold mb-0">Upload Produit</span>
                                     </div>
 
-                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">create produit</h5>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label">Email address</label>
-                                        <input name="email" type="email" placeholder="email@gmail.com" class="form-control form-control-lg" />
+                                        <label class="form-label">Name of product</label>
+                                        <input name="name" type="text" placeholder="nom du produit" class="form-control form-control-lg" />
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label">Password</label>
-                                        <input name="password" type="password" placeholder="password" class="form-control form-control-lg" />
+                                        <label class="form-label">Photo</label>
+                                        <input name="photo" type="file" placeholder="photo" class="form-control form-control-lg" />
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Price</label>
+                                        <input name="prix" type="number" placeholder="prix" class="form-control form-control-lg" />
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Description</label>
+                                        <textarea name="description" placeholder="description" class="form-control form-control-lg">
+                                        </textarea>
                                     </div>
 
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-dark btn-lg btn-block" name="login" type="submit">Login</button>
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
                                     </div>
-                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/signup" style="color: #393f81;">Register here</a></p>
                                 </form>
                             </div>
                         </div>
