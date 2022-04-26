@@ -27,7 +27,7 @@ public class AdminController {
     @Autowired
     private CommadService commadService;
 
-    @RequestMapping("admin3")
+    @RequestMapping("admin")
     public String admin(Model model) {
         List<Client> listClient = clientService.ListAllClient();
         List<Produit> listProduit = produitService.ListAllProduit();
@@ -37,6 +37,24 @@ public class AdminController {
         model.addAttribute("listProduit", listProduit);
         model.addAttribute("listCommand", listCommand);
         return "admin/admin";
+    }
+
+    @RequestMapping(value = "deleteClient", method = RequestMethod.POST, params = {"id_client"})
+    public String deleteClient(@RequestParam("id_client") Long id) {
+        clientService.deleteClient(id);
+        return "redirect:/admin/admin";
+    }
+
+    @RequestMapping(value = "deleteProduit", method = RequestMethod.POST, params = {"id_produit"})
+    public String deleteProduit(@RequestParam("id_produit") Long id) {
+        produitService.deleteProduit(id);
+        return "redirect:/admin/admin";
+    }
+
+    @RequestMapping(value = "deleteCommand", method = RequestMethod.POST, params = {"id_command"})
+    public String deleteCommand(@RequestParam("id_command") Long id) {
+        commadService.deleteCommand(id);
+        return "redirect:/admin/admin";
     }
 
     @RequestMapping("login")
@@ -51,7 +69,7 @@ public class AdminController {
 
     @RequestMapping(value = "saveProduit", method = RequestMethod.POST, params = {"name", "photo", "description", "prix"})
     public String saveProduit(@RequestParam("name") String name, @RequestParam("photo") String photo, @RequestParam("description") String description, @RequestParam("prix") Integer prix) {
-        produitService.saveProduit(new Produit(name, photo, prix, description));
+        produitService.saveProduit(new Produit(name, "/photo/" + photo, prix, description));
         return "redirect:/admin/upload";
     }
 }
