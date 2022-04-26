@@ -1,0 +1,11 @@
+create table admin (id bigint not null, password varchar(255), username varchar(255), primary key (id)) engine=InnoDB;
+create table client (id bigint not null, date_inscription date, email varchar(255) not null, password varchar(255) not null, username varchar(255) not null, primary key (id)) engine=InnoDB;
+create table command (id bigint not null, date date, id_client bigint, id_produit bigint, primary key (id)) engine=InnoDB;
+create table hibernate_sequence (next_val bigint) engine=InnoDB;
+insert into hibernate_sequence values ( 1 );
+create table produit (id bigint not null, description varchar(255), name varchar(50) not null, photo varchar(255) not null, prix integer, primary key (id)) engine=InnoDB;
+alter table client add constraint UK_bfgjs3fem0hmjhvih80158x29 unique (email);
+alter table client add constraint UK_ah5c1ribskm746956okm9283n unique (username);
+alter table produit add constraint UK_8276r39r975srbj5bttnlamk1 unique (name);
+alter table command add constraint FKfbk4r68u515tiuj3xwd4tpxmm foreign key (id_client) references client (id);
+alter table command add constraint FKc0vnxj6akej9t2ptv11grapp6 foreign key (id_produit) references produit (id);
