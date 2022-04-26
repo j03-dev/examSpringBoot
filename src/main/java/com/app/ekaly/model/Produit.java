@@ -21,7 +21,7 @@ public class Produit {
     @Column(name = "description", length = 255, nullable = true)
     private String description;
 
-    public Produit(String name, String photo, String description, String prix) {
+    public Produit() {
 
     }
 

@@ -60,7 +60,6 @@ public class ClientController {
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST, params = {"username", "email", "password"})
     public String saveUser(@RequestParam("username") String username, @RequestParam("email") String email, @RequestParam("password") String password) {
         clientService.saveClient(new Client(username, email, password, LocalDate.now()));
-
         return "user/login";
     }
 

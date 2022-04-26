@@ -3,37 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
-    <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet">
-<!--    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">-->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+    <!--    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">-->
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Ekaly<span class="text-warning">.</span>Resto</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Upload</a>
-                    </li>
-                </ul>
-                <form action="#" class="d-flex">
-                    <button class="btn btn-outline-warning">facture</button>
-                </form>
-            </div>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Ekaly<span class="text-warning">.</span>Resto</a>
+        <button aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarCollapse" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="/">Acceuil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/admin">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/upload">Upload</a>
+                </li>
+            </ul>
+            <form action="#" class="d-flex">
+                <button class="btn btn-outline-warning">facture</button>
+            </form>
         </div>
-    </nav>
-    <h1 th:text="${user}"/>
+    </div>
+</nav>
+<section>
+    <br><br>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <form action="" method="POST">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <!--boucle for -->
+                    <div class="col" th:each="produit: ${listProduit}">
+                        <div class="card shadow-sm">
+                            <img style="position: relative;" th:src="${produit.getPhoto()}"/>
+                            <div class="card-body">
+                                <p>
+                                <h3 th:text="${produit.getName()}"/>
+                                <p class="card-text" th:text="${produit.getDescription()}"/>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <form action="/commander" method="post">
+                                            <button class="btn btn-sm btn-outline-secondary" name="id_produit"
+                                                    th:value="${produit.getId()}"
+                                                    type="submit">Commander
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                    <small class="text-muted"><h3 th:text="${produit.getPrix}"/>AR</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--fin de la boucle-->
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 </body>
 </html>
