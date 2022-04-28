@@ -33,9 +33,9 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    public Boolean isAdmin(HttpSession session){
+    public Boolean isAdmin(HttpSession session) {
         String admin = (String) session.getAttribute("admin");
-        if (admin != null){
+        if (admin != null) {
             return true;
         }
         return false;
@@ -43,7 +43,7 @@ public class AdminController {
 
     @RequestMapping("admin")
     public String admin(Model model, HttpSession session) {
-        if (isAdmin(session)){
+        if (isAdmin(session)) {
             List<Client> listClient = clientService.ListAllClient();
             List<Produit> listProduit = produitService.ListAllProduit();
             List<Command> listCommand = commadService.ListAllCommand();
@@ -58,7 +58,7 @@ public class AdminController {
 
     @RequestMapping(value = "deleteClient", method = RequestMethod.POST, params = {"id_client"})
     public String deleteClient(@RequestParam("id_client") Long id, HttpSession session) {
-        if (isAdmin(session)){
+        if (isAdmin(session)) {
             clientService.deleteClient(id);
             return "redirect:/admin/admin";
         }
@@ -68,7 +68,7 @@ public class AdminController {
 
     @RequestMapping(value = "deleteProduit", method = RequestMethod.POST, params = {"id_produit"})
     public String deleteProduit(@RequestParam("id_produit") Long id, HttpSession session) {
-        if (isAdmin(session)){
+        if (isAdmin(session)) {
             produitService.deleteProduit(id);
             return "redirect:/admin/admin";
         }
@@ -78,7 +78,7 @@ public class AdminController {
 
     @RequestMapping(value = "deleteCommand", method = RequestMethod.POST, params = {"id_command"})
     public String deleteCommand(@RequestParam("id_command") Long id, HttpSession session) {
-        if (isAdmin(session)){
+        if (isAdmin(session)) {
             commadService.deleteCommand(id);
             return "redirect:/admin/admin";
         }
@@ -91,10 +91,10 @@ public class AdminController {
     }
 
     @RequestMapping(value = "auth", method = RequestMethod.POST, params = {"username", "password"})
-    public String auth(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session){
+    public String auth(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
         Admin admin = adminService.getAdminByUsername(username);
-        if (admin != null){
-            if (admin.getPassword().equals(password)){
+        if (admin != null) {
+            if (admin.getPassword().equals(password)) {
                 session.setAttribute("admin", username);
                 return "redirect:/admin/admin";
             }
@@ -104,7 +104,7 @@ public class AdminController {
 
     @RequestMapping("upload")
     public String upload(HttpSession session) {
-        if (isAdmin(session)){
+        if (isAdmin(session)) {
             return "admin/upload";
         }
         return "redirect:/admin/login";
@@ -112,7 +112,7 @@ public class AdminController {
 
     @RequestMapping(value = "saveProduit", method = RequestMethod.POST, params = {"name", "photo", "description", "prix"})
     public String saveProduit(@RequestParam("name") String name, @RequestParam("photo") String photo, @RequestParam("description") String description, @RequestParam("prix") Integer prix, HttpSession session) {
-        if (isAdmin(session)){
+        if (isAdmin(session)) {
             produitService.saveProduit(new Produit(name, "/photo/" + photo, prix, description));
             return "redirect:/admin/upload";
         }
