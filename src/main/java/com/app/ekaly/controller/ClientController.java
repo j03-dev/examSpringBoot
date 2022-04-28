@@ -44,9 +44,11 @@ public class ClientController {
     @RequestMapping(value = "/auth", method = RequestMethod.POST, params = {"email", "password"})
     public String auth(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session) {
         Client auth_client = clientService.getClientByEmail(email);
-        if (auth_client.getPassword().equals(password)) {
-            session.setAttribute("user", email);
-            return "redirect:/";
+        if (auth_client != null){
+            if (auth_client.getPassword().equals(password)) {
+                session.setAttribute("user", email);
+                return "redirect:/";
+            }
         }
         return "redirect:/user/signup";
     }
