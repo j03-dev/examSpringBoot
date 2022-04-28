@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+                    <a class="nav-link active" aria-current="page" href="/">Acceuil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
@@ -39,7 +39,7 @@
                     <div class="row g-0">
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
-                                <form method="post">
+                                <form method="post" action="/admin/auth">
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
                                         <span class="h1 fw-bold mb-0">Login Admin </span>
@@ -48,8 +48,8 @@
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Login as administrator</h5>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label">Email address</label>
-                                        <input name="username" type="email" placeholder="email@gmail.com" class="form-control form-control-lg" />
+                                        <label class="form-label">Username</label>
+                                        <input name="username" type="text" placeholder="username" class="form-control form-control-lg" />
                                     </div>
 
                                     <div class="form-outline mb-4">

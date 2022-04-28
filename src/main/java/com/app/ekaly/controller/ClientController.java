@@ -47,9 +47,8 @@ public class ClientController {
         if (auth_client.getPassword().equals(password)) {
             session.setAttribute("user", email);
             return "redirect:/";
-        } else {
-            return signup();
         }
+        return "redirect:/user/signup";
     }
 
     @RequestMapping("/signup")
